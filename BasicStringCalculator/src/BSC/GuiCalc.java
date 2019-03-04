@@ -34,12 +34,13 @@ public class GuiCalc extends JFrame {
 		if(equation.contains("-")) {
 			return processSubtract(equation);
 			}
-		if(equation.contains("/")) {
-			return processDivide(equation);			
-		}		
+				
 		if(equation.contains("*")) {
 			return processMuliply(equation);
-		}	
+		}
+		if(equation.contains("/")) {
+			return processDivide(equation);			
+		}
 		
 		if(equation.matches("[0-9]+")) {
 			return Double.parseDouble(equation);
