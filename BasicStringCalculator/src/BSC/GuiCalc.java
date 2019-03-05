@@ -38,9 +38,13 @@ public class GuiCalc extends JFrame {
 		if(equation.contains("*")) {
 			return processMuliply(equation);
 		}
+		if(equation.contains("%")) {
+			return processModulus(equation);
+		}
 		if(equation.contains("/")) {
 			return processDivide(equation);			
 		}
+		
 		
 		if(equation.matches("[0-9]+")) {
 			return Double.parseDouble(equation);
@@ -65,6 +69,10 @@ public class GuiCalc extends JFrame {
 	private double processMuliply(String equation) {
 		String[] components = equation.split("\\*");
 		return Calculate(components[0]) * Calculate(components[1]);
+	}
+	private double processModulus(String equation) {
+		String[] components = equation.split("\\%");
+		return Calculate(components[0]) % Calculate(components[1]);
 	}
 	
 	private double processAdd(String equation) {
@@ -109,7 +117,7 @@ public class GuiCalc extends JFrame {
 		setType(Type.UTILITY);
 		setTitle("Basic String Calculator");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 530, 429);
+		setBounds(100, 100, 536, 429);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.LIGHT_GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -133,7 +141,7 @@ public class GuiCalc extends JFrame {
 			}
 		});
 		btn_add.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btn_add.setBounds(13, 98, 89, 53);
+		btn_add.setBounds(13, 95, 89, 53);
 		contentPane.add(btn_add);
 		
 		JButton btn_7 = new JButton("7");
@@ -144,7 +152,7 @@ public class GuiCalc extends JFrame {
 		});
 		btn_7.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btn_7.setBackground(Color.LIGHT_GRAY);
-		btn_7.setBounds(115, 98, 89, 53);
+		btn_7.setBounds(115, 95, 89, 53);
 		contentPane.add(btn_7);
 		
 		JButton btn_8 = new JButton("8");
@@ -155,7 +163,7 @@ public class GuiCalc extends JFrame {
 		});
 		btn_8.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btn_8.setBackground(Color.LIGHT_GRAY);
-		btn_8.setBounds(217, 98, 89, 53);
+		btn_8.setBounds(217, 95, 89, 53);
 		contentPane.add(btn_8);
 		
 		JButton btn_9 = new JButton("9");
@@ -166,7 +174,7 @@ public class GuiCalc extends JFrame {
 		});
 		btn_9.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btn_9.setBackground(Color.LIGHT_GRAY);
-		btn_9.setBounds(319, 98, 89, 53);
+		btn_9.setBounds(319, 95, 89, 53);
 		contentPane.add(btn_9);
 		
 		JButton btnClear = new JButton("Clear");
@@ -176,7 +184,7 @@ public class GuiCalc extends JFrame {
 			}
 		});
 		btnClear.setFont(new Font("Tahoma", Font.BOLD, 16));
-		btnClear.setBounds(425, 98, 89, 53);
+		btnClear.setBounds(425, 95, 89, 53);
 		contentPane.add(btnClear);
 		
 		JButton btnBackSpace = new JButton("<---");
@@ -195,7 +203,7 @@ public class GuiCalc extends JFrame {
 			}
 		});
 		btnBackSpace.setFont(new Font("Tahoma", Font.BOLD, 18));
-		btnBackSpace.setBounds(425, 167, 89, 53);
+		btnBackSpace.setBounds(425, 164, 89, 53);
 		contentPane.add(btnBackSpace);
 		
 		JButton btn_Info = new JButton("Info");
@@ -205,10 +213,10 @@ public class GuiCalc extends JFrame {
 				txtFResult.setText("School project, Created by Sano Gharzani");
 			}
 		});
-		btn_Info.setBounds(425, 237, 89, 53);
+		btn_Info.setBounds(425, 234, 89, 53);
 		contentPane.add(btn_Info);
 		
-		JButton btnCalculate = new JButton("Calculate");
+		JButton btnCalculate = new JButton("Calc");
 		btnCalculate.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
@@ -221,7 +229,7 @@ public class GuiCalc extends JFrame {
 			}
 		});
 		btnCalculate.setFont(new Font("Tahoma", Font.BOLD, 16));
-		btnCalculate.setBounds(319, 312, 195, 53);
+		btnCalculate.setBounds(425, 309, 89, 53);
 		contentPane.add(btnCalculate);
 		
 		JButton btn_4 = new JButton("4");
@@ -232,7 +240,7 @@ public class GuiCalc extends JFrame {
 		});
 		btn_4.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btn_4.setBackground(Color.LIGHT_GRAY);
-		btn_4.setBounds(112, 167, 89, 53);
+		btn_4.setBounds(112, 164, 89, 53);
 		contentPane.add(btn_4);
 		
 		JButton btn_5 = new JButton("5");
@@ -243,7 +251,7 @@ public class GuiCalc extends JFrame {
 		});
 		btn_5.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btn_5.setBackground(Color.LIGHT_GRAY);
-		btn_5.setBounds(214, 167, 89, 53);
+		btn_5.setBounds(214, 164, 89, 53);
 		contentPane.add(btn_5);
 		
 		JButton btn_6 = new JButton("6");
@@ -254,7 +262,7 @@ public class GuiCalc extends JFrame {
 		});
 		btn_6.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btn_6.setBackground(Color.LIGHT_GRAY);
-		btn_6.setBounds(316, 167, 89, 53);
+		btn_6.setBounds(316, 164, 89, 53);
 		contentPane.add(btn_6);
 		
 		JButton btn_1 = new JButton("1");
@@ -265,7 +273,7 @@ public class GuiCalc extends JFrame {
 		});
 		btn_1.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btn_1.setBackground(Color.LIGHT_GRAY);
-		btn_1.setBounds(115, 237, 89, 53);
+		btn_1.setBounds(115, 234, 89, 53);
 		contentPane.add(btn_1);
 		
 		JButton btn_2 = new JButton("2");
@@ -276,7 +284,7 @@ public class GuiCalc extends JFrame {
 		});
 		btn_2.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btn_2.setBackground(Color.LIGHT_GRAY);
-		btn_2.setBounds(217, 237, 89, 53);
+		btn_2.setBounds(217, 234, 89, 53);
 		contentPane.add(btn_2);
 		
 		JButton btn_3 = new JButton("3");
@@ -287,7 +295,7 @@ public class GuiCalc extends JFrame {
 		});
 		btn_3.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btn_3.setBackground(Color.LIGHT_GRAY);
-		btn_3.setBounds(319, 237, 89, 53);
+		btn_3.setBounds(319, 234, 89, 53);
 		contentPane.add(btn_3);
 		
 		JButton btn_dot_double = new JButton(".");
@@ -298,7 +306,7 @@ public class GuiCalc extends JFrame {
 		});
 		btn_dot_double.setFont(new Font("Tahoma", Font.BOLD, 18));
 		btn_dot_double.setBackground(Color.LIGHT_GRAY);
-		btn_dot_double.setBounds(115, 312, 89, 53);
+		btn_dot_double.setBounds(319, 308, 89, 53);
 		contentPane.add(btn_dot_double);
 		
 		JButton btn_0_Ziro = new JButton("0");
@@ -309,7 +317,7 @@ public class GuiCalc extends JFrame {
 		});
 		btn_0_Ziro.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btn_0_Ziro.setBackground(Color.LIGHT_GRAY);
-		btn_0_Ziro.setBounds(217, 312, 89, 53);
+		btn_0_Ziro.setBounds(217, 309, 89, 53);
 		contentPane.add(btn_0_Ziro);
 		
 		JButton btn_subtract = new JButton("-");
@@ -319,7 +327,7 @@ public class GuiCalc extends JFrame {
 			}
 		});
 		btn_subtract.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btn_subtract.setBounds(10, 167, 89, 53);
+		btn_subtract.setBounds(10, 164, 89, 53);
 		contentPane.add(btn_subtract);
 		
 		JButton btn_divide = new JButton("/");
@@ -330,7 +338,7 @@ public class GuiCalc extends JFrame {
 			
 		});
 		btn_divide.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btn_divide.setBounds(10, 237, 89, 53);
+		btn_divide.setBounds(10, 234, 89, 53);
 		contentPane.add(btn_divide);
 		
 		JButton btn_multiply = new JButton("*");
@@ -340,7 +348,7 @@ public class GuiCalc extends JFrame {
 			}
 		});
 		btn_multiply.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btn_multiply.setBounds(10, 312, 89, 53);
+		btn_multiply.setBounds(10, 309, 89, 53);
 		contentPane.add(btn_multiply);
 		
 		JLabel lblLinkedin = new JLabel("Linkedin");
@@ -359,7 +367,18 @@ public class GuiCalc extends JFrame {
 			}
 		});
 		lblLinkedin.setHorizontalAlignment(SwingConstants.CENTER);
-		lblLinkedin.setBounds(217, 376, 89, 14);
+		lblLinkedin.setBounds(10, 375, 79, 14);
 		contentPane.add(lblLinkedin);
+		
+		JButton btnModu = new JButton("Modu");
+		btnModu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				txtFResult.setText(txtFResult.getText() +  "%");
+				
+			}
+		});
+		btnModu.setFont(new Font("Tahoma", Font.BOLD, 16));
+		btnModu.setBounds(115, 309, 89, 53);
+		contentPane.add(btnModu);
 	}
 }
