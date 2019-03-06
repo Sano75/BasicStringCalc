@@ -55,21 +55,27 @@ public class GuiCalc extends JFrame {
 		return Double.NaN;
 	}
 
+	
 	private double processDivide(String equation) {
 		String[] components = equation.split("/");
 		return Calculate(components[0])/Calculate(components[1]);
 	}
-
+	
 	private double processSubtract(String equation) {
 		String[] components = equation.split("-");
 		
 		return Calculate(components[0]) - Calculate(components[1]);
 	}
-
+	
 	private double processMuliply(String equation) {
 		String[] components = equation.split("\\*");
-		return Calculate(components[0]) * Calculate(components[1]);
-	}
+		double result = 1.0;
+		for(String component : components) {
+			result *= Calculate(component);
+		}
+		return result;
+	}	
+	
 	private double processModulus(String equation) {
 		String[] components = equation.split("\\%");
 		return Calculate(components[0]) % Calculate(components[1]);
