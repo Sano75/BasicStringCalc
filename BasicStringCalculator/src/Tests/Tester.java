@@ -29,7 +29,7 @@ public class Tester{
 		assertEquals(expect, actual, RANGE);
 	}
 	
-	
+		
 	@Test
 	public void test2() {
 		String equation = "3+4*5/4-3";
@@ -106,6 +106,17 @@ public class Tester{
 		
 		assertEquals(expect, actual, RANGE);
 	}
+	
+	@Test
+	public void test10() {
+		String equation = "10/2/2";
+		double expect = 2.5;
+		
+		double actual = calc.Calculate(equation);
+		
+		assertEquals(expect, actual, RANGE);
+	}
+	
 		
 	@Test
 	public void whenStringOneGetDoubleOne() {
@@ -183,8 +194,7 @@ public class Tester{
 		double actual = calc.Calculate(equation);
 		
 		assertEquals(expect, actual, RANGE);
-	}
-	
+	}	
 	
 	@Test
 	public void modulusCalc() {
@@ -195,5 +205,6 @@ public class Tester{
 		
 		assertEquals(expect, actual, RANGE);
 	}
+	
 
 }
