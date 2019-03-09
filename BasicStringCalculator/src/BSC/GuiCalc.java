@@ -33,8 +33,7 @@ public class GuiCalc extends JFrame {
 		}
 		if(equation.contains("-")) {
 			return processSubtract(equation);
-			}
-				
+			}				
 		if(equation.contains("*")) {
 			return processMuliply(equation);
 		}
@@ -43,8 +42,7 @@ public class GuiCalc extends JFrame {
 		}
 		if(equation.contains("/")) {
 			return processDivide(equation);			
-		}
-		
+		}		
 		
 		if(equation.matches("[0-9]+")) {
 			return Double.parseDouble(equation);
@@ -52,20 +50,27 @@ public class GuiCalc extends JFrame {
 		if(equation.matches("[0-9].+")) {
 			return Double.parseDouble(equation);
 		}
+		
 		return Double.NaN;
 	}
 
 	
 	private double processDivide(String equation) {
 		String[] components = equation.split("/");
-		return Calculate(components[0])/Calculate(components[1]);
+		
+		double result = Double.parseDouble(components[0]);
+		
+		for (int i= 1; i<components.length; i++) {
+			result /= Double.parseDouble(components[i]);
+		}
+		return result;
 	}
 	
 	private double processSubtract(String equation) {
 		String[] components = equation.split("-");
 		
-		return Calculate(components[0]) - Calculate(components[1]);
-	}
+		return Calculate(components[0])- Calculate(components[1]);
+		}		
 	
 	private double processMuliply(String equation) {
 		String[] components = equation.split("\\*");
