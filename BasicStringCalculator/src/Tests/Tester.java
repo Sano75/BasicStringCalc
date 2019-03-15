@@ -196,6 +196,12 @@ public class Tester{
 		assertEquals(expect, actual, RANGE);
 	}	
 	
+	
+	@Test(expected= java.lang.ArithmeticException.class)
+	public void divideByZeroException() {
+		throw new ArithmeticException();
+	}
+	
 	@Test
 	public void modulusCalc() {
 		String equation = "9%5";
